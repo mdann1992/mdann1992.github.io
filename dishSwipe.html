@@ -1,50 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FishingTracker</title>
     <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-      }
-      .background-image {
-        width: 100%;
-        height: 100%;
-        background-image: url('images/background.png'); /* Replace with your image path */
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .text-area {
-        width: 50%; /* Adjust width as necessary */
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.5); /* 50% transparent black */
-        border: 2px solid black;
-        border-radius: 15px;
-        color: white; /* Adjust text color as necessary */
-        text-align: center;
-        font-size: 25px;
-      }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background-image {
+            width: 100%;
+            height: 100%;
+            background-image: url('images/background.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-area {
+            width: 50%; /* Adjust width as necessary */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+            border: 2px solid black;
+            border-radius: 15px;
+            color: white; /* Adjust text color as necessary */
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 20px; /* Ensure there's space for the back button below */
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 20px; /* Adjust spacing around the button */
+            cursor: pointer;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="background-image">
-      <div class="text-area">
-      Welcome to DishSwipe </br>
-      Discover an app that transforms recipe exploration into 
-      an engaging experience. Swipe right to like or left to pass on a 
-      variety of global recipes. Perfect for solo adventurers or group 
-      fun with friends and family. As you swipe, the app learns your tastes, 
-      refining its recommendations. Start your culinary journey with a fresh way 
-      to find your next favorite meal.
-      </div>
+        <div class="text-area">
+            Welcome to DishSwipe </br>
+            Discover an app that transforms recipe exploration into 
+            an engaging experience. Swipe right to like or left to pass on a 
+            variety of global recipes. Perfect for solo adventurers or group 
+            fun with friends and family. As you swipe, the app learns your tastes, 
+            refining its recommendations. Start your culinary journey with a fresh way 
+            to find your next favorite meal.
+        </div>
+        <!-- Back Button -->
+        <button onclick="window.location.href='https://mdann1992.github.io/'" class="back-button">
+            Back to Home
+        </button>
     </div>
-  </body>
+</body>
 </html>

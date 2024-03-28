@@ -18,43 +18,48 @@
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         .text-area {
-            width: 50%; /* Adjust width as necessary */
+            width: 50%;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+            background: rgba(0, 0, 0, 0.5);
             border: 2px solid black;
             border-radius: 15px;
-            color: white; /* Adjust text color as necessary */
+            color: white;
             text-align: center;
             font-size: 25px;
-            margin-bottom: 20px; /* Ensure there's space for the back button below */
+            margin-bottom: 20px;
         }
         .back-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff; /* Bootstrap primary color */
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 20px;
-            margin: 20px; /* Adjust spacing around the button */
+            margin: 20px;
             cursor: pointer;
         }
-        .image-link { /* Neuer Stil für die Bild-Links */
-            margin: 20px;
+        .images-container { /* Container für die Bild-Links */
+            display: flex;
+            justify-content: center; /* Zentriert die Bilder nebeneinander */
+            gap: 20px; /* Abstand zwischen den Bildern */
+        }
+        .image-link {
             border-radius: 10px;
             overflow: hidden;
         }
-        .image-link img { /* Stile für die Bilder */
-            width: 100px; /* Passen Sie die Größe nach Bedarf an */
+        .image-link img {
+            width: 150px; /* Größere Bilder */
             height: auto;
-            transition: transform 0.3s ease; /* Animation beim Überfahren */
+            transition: transform 0.3s ease;
         }
         .image-link img:hover {
-            transform: scale(1.1); /* Vergrößern beim Überfahren */
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -73,13 +78,15 @@
             refining its recommendations. Start your culinary journey with a fresh way 
             to find your next favorite meal.
         </div>
-        <!-- Bild-Links hinzufügen -->
-        <a href="https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe" class="image-link">
-            <img src="images/google-play-badge.png" alt="google button">
-        </a>
-        <a href="https://apps.apple.com/de/app/dishswipe/id6477916906" class="image-link">
-            <img src="images/ios-badge.svg" alt="ios button">
-        </a>
+        <!-- Container für die Bild-Links -->
+        <div class="images-container">
+            <a href="https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe" class="image-link">
+                <img src="images/google-play-badge.png" alt="google button">
+            </a>
+            <a href="https://apps.apple.com/de/app/dishswipe/id6477916906" class="image-link">
+                <img src="images/ios-badge.svg" alt="ios button">
+            </a>
+        </div>
     </div>
 </body>
 </html>

@@ -53,6 +53,11 @@
             overflow: hidden;
         }
         .image-link img {
+            width: 200px; /* Größere Bilder */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .image-link-ios img {
             width: 150px; /* Größere Bilder */
             height: auto;
             transition: transform 0.3s ease;
@@ -82,7 +87,7 @@
         <a href="https://play.google.com/store/apps/details?id=com.deltaapps.PicPurge" class="image-link">
           <img src="images/google-play-badge.png" alt="google button">
         </a>
-        <a href="https://apps.apple.com/de/app/picpurge/id6476457013" class="image-link">
+        <a href="https://apps.apple.com/de/app/picpurge/id6476457013" class="image-link-ios">
             <img src="images/ios-badge.svg" alt="ios button">
         </a>
     </div>

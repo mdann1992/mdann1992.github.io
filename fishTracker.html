@@ -23,56 +23,67 @@
             align-items: center;
         }
         .text-area {
-            width: 50%;
-            padding: 20px;
+            width: 80%; /* Breite angepasst für kleinere Geräte */
+            padding: 10px; /* Padding reduziert */
             background: rgba(0, 0, 0, 0.5);
             border: 2px solid black;
             border-radius: 15px;
             color: white;
             text-align: center;
-            font-size: 25px;
+            font-size: 18px; /* Kleinere Schriftgröße für mobile Geräte */
             margin-bottom: 20px;
         }
         .back-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 15px; /* Padding angepasst */
             background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 20px;
-            margin: 20px;
+            font-size: 16px; /* Kleinere Schriftgröße */
+            margin: 10px; /* Margin reduziert */
             cursor: pointer;
         }
-        .images-container { /* Container für die Bild-Links */
+        .images-container {
             display: flex;
-            justify-content: center; /* Zentriert die Bilder nebeneinander */
-            gap: 20px; /* Abstand zwischen den Bildern */
+            flex-direction: column; /* Flex Direction geändert für kleinere Geräte */
+            align-items: center; /* Zentriert die Bilder vertikal */
+            gap: 10px; /* Reduzierter Abstand */
         }
-        .image-link {
+        .image-link, .image-link-ios {
             border-radius: 10px;
             overflow: hidden;
         }
-        .image-link img {
-            width: 200px; /* Größere Bilder */
+        .image-link img, .image-link-ios img {
+            width: 150px; /* Kleinere Bildgröße */
             height: auto;
             transition: transform 0.3s ease;
         }
-        .image-link-ios img {
-            width: 170px; /* Größere Bilder */
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        .image-link img:hover {
+        .image-link img:hover, .image-link-ios img:hover {
             transform: scale(1.1);
         }
-        .image-link-ios img:hover {
-            transform: scale(1.1);
+        @media (min-width: 768px) {
+            .text-area {
+                width: 50%; /* Größere Breite für Desktop */
+                padding: 20px;
+                font-size: 25px;
+            }
+            .back-button {
+                padding: 10px 20px;
+                font-size: 20px;
+                margin: 20px;
+            }
+            .images-container {
+                flex-direction: row; /* Horizontale Anordnung auf Desktop */
+                gap: 20px;
+            }
+            .image-link img, .image-link-ios img {
+                width: 200px; /* Größere Bildgröße */
+            }
         }
     </style>
   </head>
   <body>
-    <!-- Back Button -->
     <button onclick="window.location.href='https://mdann1992.github.io/'" class="back-button">
       Back to Home
     </button>
@@ -88,7 +99,6 @@
         every reel and catch! </br>
         Happy fishing!  
       </div>
-      <!-- Container für die Bild-Links -->
       <div class="images-container">
         <a href="https://play.google.com/store/apps/details?id=com.deltaapps.FishTracker" class="image-link">
           <img src="images/google-play-badge.png" alt="google button">
@@ -96,7 +106,7 @@
         <a href="https://apps.apple.com/de/app/fishingtracker/id6475622431" class="image-link-ios">
             <img src="images/ios-badge.svg" alt="ios button">
         </a>
-    </div>
+      </div>
     </div>
   </body>
 </html>

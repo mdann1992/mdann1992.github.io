@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rezepte Roulette Join</title>
+    <!-- Optional: Meta Tags für Responsivität und Mobilgeräte-Optimierung hinzufügen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+      window.onload = function () {
+        var code = new URLSearchParams(window.location.search).get("code");
+        if (code) {
+          window.location.href = `FoodSwipe://SwipeTogather?code=${code}`;
+        } else {
+          // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
+          document.body.innerHTML =
+            "<p>Es wurde kein gültiger Code übergeben. Bitte überprüfen Sie den Link oder kontaktieren Sie den Absender.</p>";
+        }
+      };
+    </script>
+  </body>
+</html>

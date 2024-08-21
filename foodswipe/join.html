@@ -12,7 +12,7 @@
         var code = new URLSearchParams(window.location.search).get("code");
         if (code) {
           alert(code);
-          window.location.href = `com.deltaapps.FoodSwipe://`;
+          window.location.href = `com.deltaapps.FoodSwipe://Main?code=${code}`;
         } else {
           // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
           document.body.innerHTML =

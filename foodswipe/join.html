@@ -11,7 +11,7 @@
       window.onload = function () {
         var code = new URLSearchParams(window.location.search).get("code");
         if (code) {
-          window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`;
+          window.location.href = `FoodSwipe://?code=${code}`;
         } else {
           // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
           document.body.innerHTML =

@@ -8,6 +8,17 @@
   </head>
   <body>
     <script>
+      async function checkURL(url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok)
+            return (window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`);
+          console.log(`URL exists: ${url}`);
+        } catch (error) {
+          window.open("https://apps.apple.com/de/app/dishswipe/id6477916906");
+        }
+      }
+
       window.onload = function () {
         var ua = navigator.userAgent.toLowerCase();
         var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
@@ -19,16 +30,7 @@
         }
         var code = new URLSearchParams(window.location.search).get("code");
         if (code) {
-          // Versuche die App zu öffnen
-          setTimeout(function () {
-            window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`;
-
-            // Fallback: Nach einer Wartezeit (z.B. 2 Sekunden) zum App Store weiterleiten
-            setTimeout(function () {
-              window.location.href =
-                "https://apps.apple.com/us/app/your-app-id";
-            }, 2000);
-          }, 0);
+          checkURL(`com.deltaapps.FoodSwipe://?code=${code}`);
         } else {
           // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
           document.body.innerHTML =

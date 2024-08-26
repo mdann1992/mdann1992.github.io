@@ -8,12 +8,16 @@
   </head>
   <body>
     <script>
-              var ua = navigator.userAgent.toLowerCase();
+      window.onload = function () {
+        var ua = navigator.userAgent.toLowerCase();
         var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
         if (isAndroid) {
-          window.location.href = "https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe";
+          window.open(
+            "https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe"
+          );
+          window.location.href =
+            "https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe";
         }
-      window.onload = function () {
         var code = new URLSearchParams(window.location.search).get("code");
         if (code) {
           window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`;

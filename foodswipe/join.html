@@ -8,16 +8,24 @@
   </head>
   <body>
     <script>
-      window.onload = function () {
-        var code = new URLSearchParams(window.location.search).get("code");
-        if (code) {
-          window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`;
-        } else {
-          // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
-          document.body.innerHTML =
-            "<p>Es wurde kein gültiger Code übergeben. Bitte überprüfen Sie den Link oder kontaktieren Sie den Absender.</p>";
-        }
-      };
+            window.onload = function () {
+              var code = new URLSearchParams(window.location.search).get("code");
+              if (code) {
+                var ua = navigator.userAgent.toLowerCase();
+                var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+                if(isAndroid) {
+                  window.location = 'https://play.google.com/store/apps/details?id=com.deltaapps.FoodSwipe';
+                }else {
+                  window.location = 'http://android.davidwalsh.name';
+                }
+      }
+                window.location.href = `com.deltaapps.FoodSwipe://?code=${code}`;
+              } else {
+                // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
+                document.body.innerHTML =
+                  "<p>Es wurde kein gültiger Code übergeben. Bitte überprüfen Sie den Link oder kontaktieren Sie den Absender.</p>";
+              }
+            };
     </script>
   </body>
 </html>

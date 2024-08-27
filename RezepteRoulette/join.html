@@ -4,15 +4,32 @@
     <meta charset="UTF-8" />
     <title>Rezepte Roulette Join</title>
     <!-- Optional: Meta Tags für Responsivität und Mobilgeräte-Optimierung hinzufügen -->
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <script>
       window.onload = function () {
+        var ua = navigator.userAgent.toLowerCase();
+        var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+
+        if (isAndroid) {
+          window.open(
+            "https://play.google.com/store/apps/details?id=com.deltaapps.RezepteRoulette"
+          );
+        }
         var code = new URLSearchParams(window.location.search).get("code");
         if (code) {
-          window.location.href = `com.deltaapps.RezepteRoulette://?code=${code}`;
+          // Versuche die App zu öffnen
+          setTimeout(function () {
+            window.location.href = `com.deltaapps.RezepteRoulette://?code=${code}`;
+
+            // Fallback: Nach einer Wartezeit (z.B. 2 Sekunden) zum App Store weiterleiten
+            setTimeout(function () {
+              window.location.href =
+                "https://apps.apple.com/de/app/rezepteroulette/id6480113692";
+            }, 2000);
+          }, 0);
         } else {
           // Optionale Fehlerbehandlung, falls kein Code übergeben wurde
           document.body.innerHTML =

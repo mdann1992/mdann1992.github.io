@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.deltaapps.FoodSwipe",
+      "sha256_cert_fingerprints": [
+        "BE:3D:A6:DF:2F:0D:BC:8A:06:56:82:76:3E:A6:A1:D8:27:C6:94:54:39:75:12:21:F9:EC:34:AB:00:0B:CB:E5"
+      ]
+    }
+  }
+]

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background-image {
+            width: 100%;
+            height: 100%;
+            background-image: url('images/background.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-area {
+            width: 80%; /* Breite angepasst für kleinere Geräte */
+            padding: 10px; /* Padding reduziert */
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid black;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            font-size: 18px; /* Kleinere Schriftgröße für mobile Geräte */
+            margin-bottom: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px; /* Padding angepasst */
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px; /* Kleinere Schriftgröße */
+            margin: 10px; /* Margin reduziert */
+            cursor: pointer;
+        }
+        .images-container {
+            display: flex;
+            flex-direction: column; /* Flex Direction geändert für kleinere Geräte */
+            align-items: center; /* Zentriert die Bilder vertikal */
+            gap: 10px; /* Reduzierter Abstand */
+        }
+        .image-link, .image-link-ios {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .image-link img, .image-link-ios img {
+            width: 150px; /* Kleinere Bildgröße */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .image-link img:hover, .image-link-ios img:hover {
+            transform: scale(1.1);
+        }
+        @media (min-width: 768px) {
+            .text-area {
+                width: 50%; /* Größere Breite für Desktop */
+                padding: 20px;
+                font-size: 25px;
+            }
+            .back-button {
+                padding: 10px 20px;
+                font-size: 20px;
+                margin: 20px;
+            }
+            .images-container {
+                flex-direction: row; /* Horizontale Anordnung auf Desktop */
+                gap: 20px;
+            }
+            .image-link img, .image-link-ios img {
+                width: 200px; /* Größere Bildgröße */
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='https://mdann1992.github.io/'" class="back-button">
+        Back to Home
+    </button>
+    <div class="background-image">
+        <div class="text-area">
+            Wilkommen bei Pomodoro</br>
+            Pomodoro is ein simple timer app für den Arbeitsaltag, welcher nach der pomodoro technik funktioniert. 
+            Man kann sich eigene Timer erstellen. In zukunft möchte ich noch ein widget und eine to-do-liste hinzufügen.
+        </div>
+        <!-- Container für die Bild-Links -->
+        <div class="images-container">
+            <a href="https://play.google.com/store/apps/details?id=com.deltaapps.pomodoro" class="image-link">
+                <img src="images/google-play-badge.png" alt="google button">
+            </a>
+            <a href="https://deltaapps.de" class="image-link-ios">
+                <img src="images/ios-badge.svg" alt="ios button">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

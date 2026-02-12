@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Documentation — AI Recipe Generator (CookChat)</title>
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --paper: #ffffff;
+      --text: #132238;
+      --muted: #5b6b80;
+      --line: #dce3ed;
+      --primary: #0d6f66;
+      --primary-soft: #e7f7f4;
+      --note-bg: #eef4ff;
+      --note-border: #b8ccff;
+      --warn-bg: #fff4e8;
+      --warn-border: #ffc88a;
+      --tip-bg: #e9f9ef;
+      --tip-border: #9ad9af;
+      --code-bg: #0f1723;
+      --code-text: #e6edf7;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      line-height: 1.65;
+      padding: 20px 14px 36px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .topbar strong {
+      font-size: 0.95rem;
+      margin-right: 10px;
+    }
+
+    .topbar a {
+      text-decoration: none;
+      color: #114f93;
+      font-size: 0.87rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .topbar a:hover {
+      border-color: #bfd4ef;
+      background: #eef6ff;
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .toc {
+      margin-top: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .toc h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 18px;
+      columns: 2;
+      gap: 18px;
+    }
+
+    .toc li { margin: 6px 0; }
+    .toc a {
+      text-decoration: none;
+      color: #144c8a;
+    }
+
+    section {
+      margin-top: 28px;
+      padding-top: 6px;
+      border-top: 1px solid #f0f3f8;
+    }
+
+    section h2 {
+      margin: 0 0 8px;
+      font-size: 1.24rem;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      margin: 18px 0 6px;
+      font-size: 1.02rem;
+    }
+
+    p { margin: 0 0 10px; }
+    ul, ol { margin: 8px 0 12px 22px; }
+    li { margin-bottom: 6px; }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      border: 1px solid #c8ded9;
+      background: var(--primary-soft);
+      color: #0b5f57;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fcfdff;
+    }
+
+    pre {
+      margin: 10px 0 14px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 10px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      border: 1px solid #1f2a3a;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88rem;
+    }
+
+    .callout {
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0 14px;
+      border: 1px solid;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.92rem;
+    }
+
+    .note {
+      background: var(--note-bg);
+      border-color: var(--note-border);
+    }
+
+    .warning {
+      background: var(--warn-bg);
+      border-color: var(--warn-border);
+    }
+
+    .tip {
+      background: var(--tip-bg);
+      border-color: var(--tip-border);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .content { padding: 18px; }
+      .toc ul { columns: 1; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="doc">
+      <nav class="topbar" aria-label="Section navigation">
+        <strong>CookChat Docs</strong>
+        <a href="#overview">Overview</a>
+        <a href="#tech-stack">Tech Stack</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#app-structure">App Structure</a>
+        <a href="#key-flows">Key Flows</a>
+        <a href="#revenuecat">RevenueCat</a>
+        <a href="#security">Security</a>
+        <a href="#testing-release">Testing & Release</a>
+        <a href="#appendix">Appendix</a>
+      </nav>
+
+      <div class="content">
+        <header>
+          <h1>Technical Documentation: AI Recipe Generator (CookChat)</h1>
+          <p>React Native Expo documentation focused on architecture, AI recipe generation, and RevenueCat subscriptions.</p>
+        </header>
+
+        <aside class="toc">
+          <h2>Table of Contents</h2>
+          <ul>
+            <li><a href="#overview">1. Overview</a></li>
+            <li><a href="#tech-stack">2. Tech Stack</a></li>
+            <li><a href="#architecture">3. Architecture</a></li>
+            <li><a href="#app-structure">4. App Structure</a></li>
+            <li><a href="#key-flows">5. Key Flows</a></li>
+            <li><a href="#revenuecat">6. RevenueCat Implementation</a></li>
+            <li><a href="#security">7. Security & Compliance</a></li>
+            <li><a href="#testing-release">8. Testing & Release</a></li>
+            <li><a href="#appendix">9. Appendix</a></li>
+          </ul>
+        </aside>
+
+        <section id="overview">
+          <h2>1) Overview</h2>
+          <p>AI Recipe Generator (CookChat) helps users transform available ingredients and dietary preferences into practical recipes. The core interaction is simple: enter ingredients, select constraints (keto, vegan, gluten-free, etc.), and receive tailored results with step-by-step cooking instructions. The app also includes a diary so users can log meals from generated recipes or add manual entries.</p>
+          <p>Primary product goals are:</p>
+          <ul>
+            <li><strong>Fast UX:</strong> reduce friction from “what should I cook?” to “start cooking now.”</li>
+            <li><strong>Low API cost:</strong> prompt design, caching, and gated premium usage.</li>
+            <li><strong>Safe content:</strong> guardrails against unsafe instructions and sensitive ingredient misuse.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="badge">Ingredients to Recipe</span>
+            <span class="badge">Dietary Personalization</span>
+            <span class="badge">Step-by-Step</span>
+            <span class="badge">Meal Diary</span>
+          </div>
+        </section>
+
+        <section id="tech-stack">
+          <h2>2) Tech Stack</h2>
+          <div class="grid-2">
+            <div class="panel">
+              <h3>Frontend</h3>
+              <ul>
+                <li>React Native + Expo</li>
+                <li>TypeScript</li>
+                <li>React Navigation</li>
+                <li>react-native-paper (Material Design 3)</li>
+                <li>i18next for localization</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3>Monetization</h3>
+              <ul>
+                <li>RevenueCat SDK for subscriptions</li>
+                <li>Offerings/Packages for paywall configuration</li>
+                <li>Entitlements to gate premium features</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Backend / Infrastructure</h3>
+          <p>Typical setup uses a server proxy (Firebase Cloud Functions or equivalent) between the app and OpenAI. This keeps provider keys off the client and allows request validation, rate limiting, and logging. Direct OpenAI calls from the app are possible in early prototypes, but production should prefer a backend proxy. If temporary direct calls are used, key exposure should be minimized and managed with EAS secrets and build-time env injection.</p>
+
+          <h3>Analytics / Crash Reporting (Optional)</h3>
+          <ul>
+            <li>Firebase Analytics for event funnels (generation_started, paywall_viewed, purchase_success)</li>
+            <li>Sentry for runtime errors and release health</li>
+          </ul>
+          <div class="tip callout">
+            <strong>Tip</strong>
+            Track cost-critical events early: average prompt size, generations per user/day, and paywall conversion by trigger.
+          </div>
+        </section>
+
+        <section id="architecture">
+          <h2>3) Architecture</h2>
+          <h3>High-Level Diagram</h3>
+          <pre><code>+---------------------+
+|   React Native UI   |
+| Screens + Components|
++----------+----------+
+           |
+           v
++---------------------+
+| Providers / State   |
+| Subscription, Auth, |
+| Settings, i18n      |
++----------+----------+
+           |
+           v
++---------------------+         +----------------------+
+| API Client Layer    |  -----> | Optional Backend     |
+| (ApiService)        |         | (Cloud Functions)    |
++----------+----------+         +----------+-----------+
+           |                                |
+           +--------------------------------+
+                            |
+                            v
+                     +-------------+
+                     | OpenAI API  |
+                     +-------------+</code></pre>
+
+          <h3>Main Modules</h3>
+          <ul>
+            <li><strong>Screens:</strong> Assistant, Recipes, RecipeDetail, Diary, Settings.</li>
+            <li><strong>Services:</strong> <code>ApiService</code> for generation requests, <code>SubscriptionService</code> for RevenueCat operations.</li>
+            <li><strong>Providers:</strong> <code>SubscriptionProvider</code> for entitlement state; Auth/Settings provider for profile, language, dietary defaults.</li>
+            <li><strong>Storage:</strong> AsyncStorage for local preferences, cached recipes, diary entries (local-first).</li>
+            <li><strong>Networking:</strong> typed request/response models, timeout handling, retry policy for transient failures.</li>
+          </ul>
+
+          <h3>Recipe Generation Data Flow</h3>
+          <ol>
+            <li>User enters ingredients and preference filters in Assistant screen.</li>
+            <li>Input is normalized (dedupe ingredients, trim length, validate constraints).</li>
+            <li>Subscription state is checked for generation limits and premium flags.</li>
+            <li><code>ApiService.generateRecipes()</code> sends request to backend proxy (recommended) or direct provider endpoint.</li>
+            <li>Response is parsed into structured cards (title, ingredients, steps, tags, prep time).</li>
+            <li>User opens RecipeDetail and can save to diary.</li>
+            <li>Events are logged for analytics and cost monitoring.</li>
+          </ol>
+        </section>
+
+        <section id="app-structure">
+          <h2>4) App Structure</h2>
+          <p>Suggested folder layout:</p>
+          <pre><code>src/
+  api/
+    client.ts
+    endpoints.ts
+    types.ts
+  components/
+    CookChatSubscriptionCard.tsx
+    RecipeCard.tsx
+    PaywallBottomSheet.tsx
+  i18n/
+    index.ts
+    locales/
+      en.json
+      de.json
+  navigation/
+    RootNavigator.tsx
+    types.ts
+  providers/
+    SubscriptionProvider.tsx
+    SettingsProvider.tsx
+    AuthProvider.tsx
+  screens/
+    AssistantScreen.tsx
+    RecipesScreen.tsx
+    RecipeDetailScreen.tsx
+    DiaryScreen.tsx
+    SettingsScreen.tsx
+  services/
+    ApiService.ts
+    SubscriptionService.ts
+  storage/
+    diaryStorage.ts
+    settingsStorage.ts
+    recipeCache.ts
+  utils/
+    validators.ts
+    formatters.ts</code></pre>
+        </section>
+
+        <section id="key-flows">
+          <h2>5) Key Flows</h2>
+          <h3>A) Generate Recipes (with and without subscription)</h3>
+          <ol>
+            <li>User taps Generate after entering ingredients/preferences.</li>
+            <li>If free quota exists, request proceeds and decrements local/remote usage counter.</li>
+            <li>If quota exhausted and entitlement inactive, show paywall bottom sheet.</li>
+            <li>Subscribed users get unlimited generations or higher cap based on entitlement rules.</li>
+            <li>On success, recipe list opens; on error, show actionable retry states.</li>
+          </ol>
+
+          <h3>B) Diary Flow</h3>
+          <ol>
+            <li>From RecipeDetail, user taps “Add to Diary” and confirms meal type/date.</li>
+            <li>Manual entry path in Diary screen supports custom name, notes, and tags.</li>
+            <li>Entries persist to AsyncStorage first; optional cloud sync can be enabled later.</li>
+          </ol>
+
+          <h3>C) Localization (i18next)</h3>
+          <p>Initialize i18next once at app bootstrap with fallback language, then expose language switch in Settings provider. Keys should be namespaced by feature (assistant.*, diary.*, paywall.*) to keep translation files maintainable.</p>
+          <pre><code>import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import en from "./locales/en.json";
+import de from "./locales/de.json";
+
+i18n.use(initReactI18next).init({
+  compatibilityJSON: "v3",
+  resources: { en: { translation: en }, de: { translation: de } },
+  lng: "en",
+  fallbackLng: "en",
+  interpolation: { escapeValue: false }
+});</code></pre>
+        </section>
+
+        <section id="revenuecat">
+          <h2>6) RevenueCat Implementation (Detailed)</h2>
+
+          <h3>Core Concepts</h3>
+          <ul>
+            <li><strong>Offerings:</strong> remote paywall configuration grouping packages.</li>
+            <li><strong>Packages:</strong> purchasable options (monthly, annual, lifetime if used).</li>
+            <li><strong>Entitlements:</strong> feature access flags (example: <code>pro</code>).</li>
+            <li><strong>CustomerInfo:</strong> current purchase/entitlement state for user.</li>
+          </ul>
+
+          <h3>Setup Steps (iOS + Android)</h3>
+          <ol>
+            <li>Create bundle ID (iOS) and package name (Android) before product setup.</li>
+            <li>Create in-app subscriptions in App Store Connect and Play Console.</li>
+            <li>Configure identical products in RevenueCat and attach them to an Offering.</li>
+            <li>Create entitlement (e.g. <code>pro</code>) and map products/packages to it.</li>
+            <li>Use platform-specific RevenueCat public SDK keys in app config.</li>
+          </ol>
+
+          <div class="warning callout">
+            <strong>Warning</strong>
+            Store products may take time to propagate. During this window, offerings can appear empty even when configuration is correct.
+          </div>
+
+          <h3>SDK Initialization (TypeScript)</h3>
+          <pre><code>import Purchases, { LOG_LEVEL } from "react-native-purchases";
+import { Platform } from "react-native";
+
+const RC_IOS_KEY = process.env.EXPO_PUBLIC_REVENUECAT_API_KEY_IOS ?? "";
+const RC_ANDROID_KEY = process.env.EXPO_PUBLIC_REVENUECAT_API_KEY_ANDROID ?? "";
+
+export async function initRevenueCat(appUserId?: string) {
+  Purchases.setLogLevel(LOG_LEVEL.WARN);
+  await Purchases.configure({
+    apiKey: Platform.OS === "ios" ? RC_IOS_KEY : RC_ANDROID_KEY,
+    appUserID: appUserId
+  });
+}</code></pre>
+
+          <h3>Fetch Offerings</h3>
+          <pre><code>export async function getCurrentOffering() {
+  const offerings = await Purchases.getOfferings();
+  return offerings.current; // null when not available
+}</code></pre>
+
+          <h3>Purchase Flow (with loading state)</h3>
+          <pre><code>import { useState } from "react";
+import Purchases, { PurchasesPackage } from "react-native-purchases";
+
+export function usePurchase() {
+  const [loading, setLoading] = useState(false);
+
+  const purchase = async (pkg: PurchasesPackage) => {
+    try {
+      setLoading(true);
+      const { customerInfo } = await Purchases.purchasePackage(pkg);
+      const active = customerInfo.entitlements.active["pro"] != null;
+      return { success: active };
+    } catch (err: any) {
+      if (!err?.userCancelled) {
+        console.error("Purchase failed", err);
+      }
+      return { success: false };
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, purchase };
+}</code></pre>
+
+          <h3>Restore Purchases</h3>
+          <pre><code>export async function restorePurchases() {
+  const customerInfo = await Purchases.restorePurchases();
+  return customerInfo.entitlements.active["pro"] != null;
+}</code></pre>
+
+          <h3>Entitlement Check (<code>isSubscribed</code>)</h3>
+          <pre><code>export async function isSubscribed() {
+  const info = await Purchases.getCustomerInfo();
+  return Boolean(info.entitlements.active["pro"]);
+}</code></pre>
+
+          <h3>Manage Subscription Behavior</h3>
+          <p>Use <code>Purchases.showManageSubscriptions()</code> when available to route users to native store management screens. Fallback behavior should open platform-specific account subscription URLs. Place this action in Settings and inside paywall footer to reduce support requests.</p>
+
+          <h3>Common Pitfalls</h3>
+          <ul>
+            <li>Testing in production account instead of sandbox/license tester account.</li>
+            <li>Products not approved/active yet, causing empty offering responses.</li>
+            <li>Mismatched product IDs between stores and RevenueCat dashboard.</li>
+            <li>Android service account / Play Console permissions not linked correctly.</li>
+            <li>Using stale cached customer info without refresh on app foreground.</li>
+          </ul>
+
+          <h3>Paywall Trigger Strategy</h3>
+          <p>A practical pattern for CookChat is one free generation for first-time value demonstration, then paywall on second attempt for non-subscribers. The paywall can be a bottom sheet styled like <code>CookChatSubscriptionCard</code> with clear monthly/yearly options, restore action, and feature bullets.</p>
+          <div class="note callout">
+            <strong>Note</strong>
+            Keep restore and close actions visible to meet store review expectations and avoid deceptive gating patterns.
+          </div>
+        </section>
+
+        <section id="security">
+          <h2>7) Security &amp; Compliance</h2>
+          <ul>
+            <li><strong>OpenAI key safety:</strong> do not ship raw provider secrets in client bundles for production. Prefer server proxy.</li>
+            <li><strong>Data handling:</strong> ingredients, preferences, and diary entries should be local-first, with optional cloud sync behind explicit consent.</li>
+            <li><strong>Content safety:</strong> constrain prompts, reject harmful requests, and optionally add moderation before response display.</li>
+          </ul>
+          <div class="warning callout">
+            <strong>Warning</strong>
+            Even with obfuscation, client-side keys can be extracted from app binaries. Treat direct key embedding as development-only.
+          </div>
+        </section>
+
+        <section id="testing-release">
+          <h2>8) Testing &amp; Release</h2>
+          <h3>Subscription Test Checklist</h3>
+          <ul>
+            <li>iOS sandbox tester account verifies purchase, renewal, cancellation, restore.</li>
+            <li>Google license testing account validates purchase and acknowledgment behavior.</li>
+            <li>Entitlement changes reflected on app restart and foreground resume.</li>
+            <li>Offerings fallback state handled when network/store unavailable.</li>
+          </ul>
+
+          <h3>EAS Build Profiles</h3>
+          <p>Use separate profiles for <code>development</code>, <code>preview</code>, and <code>production</code>. Keep API endpoints and RevenueCat keys scoped by profile using Expo env vars and EAS secrets.</p>
+          <pre><code>{
+  "build": {
+    "development": { "developmentClient": true, "distribution": "internal" },
+    "preview": { "distribution": "internal" },
+    "production": {}
+  }
+}</code></pre>
+
+          <h3>Versioning Notes</h3>
+          <p>Increment native build numbers each release (<code>ios.buildNumber</code>, <code>android.versionCode</code>) while keeping semantic app version for user-visible changelog clarity.</p>
+        </section>
+
+        <section id="appendix">
+          <h2>9) Appendix</h2>
+          <h3>Environment Variables</h3>
+          <pre><code>EXPO_PUBLIC_OPENAI_API_URL=https://your-proxy.example.com/generate
+EXPO_PUBLIC_REVENUECAT_API_KEY_IOS=appl_xxx
+EXPO_PUBLIC_REVENUECAT_API_KEY_ANDROID=goog_xxx
+EXPO_PUBLIC_APP_ENV=development|preview|production</code></pre>
+
+          <h3>Glossary</h3>
+          <ul>
+            <li><strong>Offering:</strong> RevenueCat grouping of packages shown on paywall.</li>
+            <li><strong>Package:</strong> specific purchasable option (monthly/yearly).</li>
+            <li><strong>Entitlement:</strong> access control flag (e.g. Pro features).</li>
+          </ul>
+          <p class="muted">Document scope: technical reference for implementation and release operations of CookChat.</p>
+        </section>
+
+        <footer>
+          Prepared for engineering handoff and App Store / Play Store subscription rollout.
+        </footer>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

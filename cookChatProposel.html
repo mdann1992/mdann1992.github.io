@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Written Proposal — AI Recipe Generator (CookChat)</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --paper: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #0f766e;
+      --accent-soft: #e6f5f3;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #f7f9fd 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 28px 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .paper {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 8px 0 6px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .updated {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .summary {
+      background: var(--accent-soft);
+      border: 1px solid #c7ece7;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 16px 0 22px;
+    }
+
+    .summary strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #065f59;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px;
+    }
+
+    .info-grid {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      align-self: start;
+      background: #fcfcfd;
+    }
+
+    .info-grid h3 {
+      margin: 0 0 10px;
+      font-size: 0.98rem;
+      letter-spacing: 0.01em;
+    }
+
+    .meta-item {
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.93rem;
+    }
+
+    .meta-item:first-of-type { border-top: 0; padding-top: 0; }
+
+    .label {
+      color: var(--muted);
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 2px;
+    }
+
+    section { margin-bottom: 24px; }
+    section:last-child { margin-bottom: 0; }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin: 0 0 10px; }
+    ul { margin: 8px 0 10px 20px; padding: 0; }
+    li { margin-bottom: 6px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #cde8e4;
+      background: #f0faf8;
+      color: #0b625c;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .audience {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .audience li {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+
+    .audience strong { display: block; }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 820px) {
+      .paper { padding: 22px; }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <article class="paper">
+      <header>
+        <h1>Written Proposal: AI Recipe Generator (CookChat)</h1>
+        <p class="subtitle">A practical, personalized cooking assistant that turns available ingredients into doable meals.</p>
+        <p class="updated">Last updated: February 12, 2026</p>
+      </header>
+
+      <div class="summary">
+        <strong>Quick Summary</strong>
+        CookChat helps people decide what to cook fast by generating recipes from ingredients they already have, while honoring dietary preferences. The business model combines a useful free tier with paid subscriptions for unlimited, high-value use.
+      </div>
+
+      <div class="layout">
+        <div>
+          <section>
+            <h2>1. Executive Summary</h2>
+            <p>AI Recipe Generator (CookChat) addresses a common daily friction point: deciding what to cook with limited time, ingredients, and dietary constraints. Many users abandon cooking plans because planning is difficult, not because they lack motivation. CookChat solves this by transforming pantry inputs into personalized recipes in seconds. The app supports dietary modes such as keto, vegan, and gluten-free, then produces clear step-by-step instructions. It also includes a meal diary to track what users cooked and ate, helping build consistency over time. The product is designed for broad consumer appeal with focused personalization, which creates both utility and habit. Monetization is built around a fair free tier and an affordable subscription model that scales with user engagement.</p>
+          </section>
+
+          <section>
+            <h2>2. Problem</h2>
+            <ul>
+              <li>People often do not know what to cook with the ingredients they already have.</li>
+              <li>Most recipe apps prioritize browsing over decision-making and personalization.</li>
+              <li>Dietary restrictions make recipe discovery slower and more frustrating.</li>
+              <li>Users who cook regularly still lack an easy way to log and review meal history.</li>
+            </ul>
+            <p>In short, users need less inspiration content and more immediate, personalized guidance that turns available ingredients into actionable meals.</p>
+          </section>
+
+          <section>
+            <h2>3. Solution Overview</h2>
+            <p>CookChat lets users enter ingredients on hand, select preferences (keto, vegan, gluten-free, and other constraints), and generate tailored recipes instantly. Each recipe includes concise ingredient lists, substitutions when possible, and step-by-step cooking instructions designed for clarity. A built-in diary feature allows users to save cooked meals, monitor adherence to dietary goals, and revisit successful recipes. This combination of instant generation plus habit tracking moves the app from a one-time utility to a recurring daily assistant.</p>
+            <div class="tags">
+              <span class="tag">Keto</span>
+              <span class="tag">Vegan</span>
+              <span class="tag">Gluten-Free</span>
+              <span class="tag">Diary</span>
+            </div>
+          </section>
+
+          <section>
+            <h2>4. Target Audience</h2>
+            <ul class="audience">
+              <li><strong>Busy Professionals</strong> Need fast meal decisions after work and value minimal planning overhead.</li>
+              <li><strong>Health-Conscious Users</strong> Want meals aligned with specific diet frameworks and nutrition intentions.</li>
+              <li><strong>Students & Young Adults</strong> Need budget-friendly cooking from limited pantry items and simple instructions.</li>
+              <li><strong>Families & Caregivers</strong> Need adaptable meal ideas based on changing household ingredients and preferences.</li>
+              <li><strong>Beginner Home Cooks</strong> Need confidence through clear, sequential steps and reduced decision fatigue.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>5. Differentiation</h2>
+            <p>Unlike generic recipe apps that overwhelm users with static catalogs, CookChat starts with what users already have and what they can actually eat. The “cook with what you have” flow reduces food waste, saves money, and removes browsing fatigue. Personalization is not an add-on; it is the core experience. Over time, the diary data improves relevance and creates a compounding advantage in user retention.</p>
+          </section>
+
+          <section>
+            <h2>6. Monetization Strategy</h2>
+            <p><strong>Free vs Subscription Gating:</strong> The free tier includes limited daily generations, basic preference filters, and recipe previews. Subscription unlocks unlimited generations, full recipe history, advanced preference controls, and priority response quality. This model is fair because users can prove value before paying.</p>
+            <p><strong>Pricing Suggestion:</strong> $7.99/month or $59.99/year (about 37% annual savings) to encourage longer commitments and reduce churn volatility.</p>
+            <p><strong>Optional Add-ons:</strong> Ad-free upgrade for free users, premium meal-plan templates, and family sharing for multi-user households.</p>
+          </section>
+
+          <section>
+            <h2>7. Go-To-Market</h2>
+            <p><strong>ASO Focus Keyword:</strong> “recipe generator.” This keyword aligns with high-intent search behavior and clearly communicates core value.</p>
+            <p><strong>Acquisition Channels:</strong> App Store search optimization, short-form social reels demonstrating “fridge-to-meal” transformations, creator partnerships in nutrition niches, and referral prompts after successful recipe sessions.</p>
+          </section>
+
+          <section>
+            <h2>8. Success Metrics</h2>
+            <ul>
+              <li><strong>Activation:</strong> % of new users generating their first recipe within day 1.</li>
+              <li><strong>Conversion:</strong> Free-to-paid upgrade rate after usage cap prompts.</li>
+              <li><strong>Retention:</strong> D7 and D30 returning users; weekly recipes generated per active user.</li>
+              <li><strong>Churn:</strong> Monthly subscription cancellation rate and reactivation rate.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>9. Risks & Mitigations</h2>
+            <ul>
+              <li><strong>API Cost Risk:</strong> Use token limits, caching for repeated prompts, and quality tiers by plan level.</li>
+              <li><strong>Content Safety:</strong> Add moderation filters for unsafe cooking advice and allergen-sensitive suggestions.</li>
+              <li><strong>Compliance:</strong> Present clear disclaimers, privacy controls for diary data, and platform policy alignment.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>10. Call to Action / Closing</h2>
+            <p>CookChat is positioned to win by solving a frequent, practical problem with strong personalization and a clear monetization path. The next step is to launch an MVP with core generation, dietary filters, and diary tracking, then optimize paywall timing based on activation and conversion data. With focused execution, AI Recipe Generator can become a daily-use cooking product with sustainable subscription revenue.</p>
+          </section>
+        </div>
+
+        <aside class="info-grid" aria-label="Proposal metadata">
+          <h3>Project Snapshot</h3>
+          <div class="meta-item">
+            <span class="label">Product</span>
+            AI Recipe Generator (CookChat)
+          </div>
+          <div class="meta-item">
+            <span class="label">Platform</span>
+            iOS / Android
+          </div>
+          <div class="meta-item">
+            <span class="label">Tech</span>
+            React Native (Expo)
+          </div>
+          <div class="meta-item">
+            <span class="label">AI Layer</span>
+            OpenAI API
+          </div>
+          <div class="meta-item">
+            <span class="label">Monetization</span>
+            Subscription + Add-ons
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        Prepared for: Hackathon / App Store submission
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

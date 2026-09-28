@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Datenschutzerklärung und Privacy Policy für Hörpfad, die interaktive Hörabenteuer-App für iOS und Android.">
+  <title>Hörpfad – Datenschutz / Privacy Policy</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#101924;color:#f5ebdd;font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:850px;margin:auto;padding:40px 24px 80px}header{padding:28px 0 34px;border-bottom:1px solid #3c4d58}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(40px,8vw,65px);line-height:1.1;letter-spacing:-.03em;margin:16px 0 24px}h2{font-size:32px;line-height:1.25;margin:42px 0 16px}h3{font-size:22px;line-height:1.3;margin:32px 0 9px}p,li{max-width:76ch}li{margin:7px 0}a{color:#f0cda6;text-underline-offset:4px}a:hover{color:#fff}.eyebrow{color:#d7a46c;font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase}.meta{color:#aeb9bd;font-size:14px}nav{display:flex;gap:18px;margin-top:24px}nav a{border:1px solid #3c4d58;border-radius:999px;padding:7px 16px;text-decoration:none}.lead{font-size:18px;line-height:1.6}.callout{padding:18px 22px;border-left:3px solid #d7a46c;background:#1a2835;border-radius:0 12px 12px 0}address{font-style:normal}section{scroll-margin-top:24px}.english{border-top:1px solid #3c4d58;margin-top:64px;padding-top:12px}footer{color:#aeb9bd;border-top:1px solid #3c4d58;padding-top:24px;margin-top:55px;font-size:13px}@media(max-width:480px){main{padding:22px 19px 56px}h2{font-size:28px}}
+  </style>
+</head>
+<body><main>
+<header>
+  <div class="eyebrow">HÖRPFAD · IOS &amp; ANDROID</div>
+  <h1>Datenschutz.<br>Privacy Policy.</h1>
+  <p class="meta">Stand / Last updated: 28. September 2026 / September 28, 2026</p>
+  <nav aria-label="Language"><a href="#de" lang="de">Deutsch</a><a href="#en" lang="en">English</a></nav>
+</header>
+<section id="de" lang="de">
+  <h2>Datenschutzerklärung für Hörpfad</h2>
+  <p class="lead">Hörpfad erstellt interaktive Geschichten, die du liest oder anhörst und mit Entscheidungen fortsetzt. Diese Erklärung beschreibt die Verarbeitung in der iOS- und Android-App und ihren Backend-Diensten.</p>
+  <h3>1. Verantwortlicher und Kontakt</h3>
+  <address>DeltaApps · Maurice Dann<br>Lochgasse 1<br>55288 Gabsheim, Deutschland<br>E-Mail: <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a></address>
+  <h3>2. Welche Daten verarbeitet werden</h3>
+  <p>Bei der ersten Nutzung erstellt Firebase Authentication ein anonymes Gerätekonto mit einer Kennung (UID). Du musst dafür weder Namen noch E-Mail-Adresse eingeben. Unter dieser Kennung speichern wir in einer eigenen Hörpfad-Firestore-Datenbank deine Abenteueridee, Sprache und Stimmwahl, generierte Pläne und Szenen, Entscheidungen, Inventar, entdeckte Geheimnisse und Erfolge, Ziele, Enden, Spielzeiten, Anfragezähler und Audio-Kontingent. Technische Vorgangskennungen, Modellnamen und Nutzungswerte helfen, Anfragen korrekt zuzuordnen und doppelte Generierung zu vermeiden. Die App speichert die anonyme Anmeldung auf dem Gerät.</p>
+  <p>Bitte gib in freien Geschichtenbeschreibungen keine vertraulichen Daten über dich oder andere Personen ein. Solche Angaben können Teil der generierten Geschichte und der dafür nötigen KI-Anfragen werden.</p>
+  <h3>3. KI-Geschichten und Sprachausgabe</h3>
+  <p>Wenn du eine Geschichte erstellst oder fortsetzt, sendet die App die nötigen Texte und den Spielstand an unsere Firebase Functions. Der Server übermittelt die Geschichtenbeschreibung beziehungsweise die aktuelle Szene, geplante Handlung, Auswahl und relevante Spielstandsdaten über OpenRouter an ein Textmodell. Hörpfad ist für Google Gemini 2.5 Flash konfiguriert; OpenRouter vermittelt die Anfrage an einen verfügbaren Anbieter-Endpunkt. Für eine angeforderte Vertonung sendet der Server den Szenentext über OpenRouter an das konfigurierte xAI-Grok-Sprachmodell. Die App sendet keine Mikrofonaufnahme und verlangt keinen Mikrofonzugriff für diese Funktionen.</p>
+  <p>Für Textanfragen setzt unser Server die OpenRouter-Routingoption <code>data_collection: deny</code>. Diese schließt nach OpenRouters Angaben entsprechend gekennzeichnete Anbieter-Endpunkte aus. Für Sprachanfragen setzt der aktuelle Code diese Option nicht. Wir versprechen weder eine Verarbeitung nur in der EU noch eine generelle sofortige Löschung aller Eingaben bei den KI-Anbietern. Deren Aufbewahrung und Sicherheitsverarbeitung richtet sich nach den jeweils geltenden Bedingungen.</p>
+  <h3>4. Audiodateien und technische Infrastruktur</h3>
+  <p>Erzeugte MP3-Dateien liegen in einem privaten Cloud-Storage-Bucket, zugeordnet zur anonymen UID. Zum Abspielen stellt der Server einen zeitlich begrenzten, signierten Download-Link aus. Die App kann Audiodateien im Gerätecachespeicher ablegen, damit dieselbe Aufnahme erneut abgespielt werden kann. Der Gerätecachespeicher kann auch vom Betriebssystem geleert werden. Hörpfad verwendet Firebase Authentication, Cloud Firestore, Cloud Functions und Cloud Storage von Google. Die Firestore-Datenbank, der Audio-Bucket und die Functions sind für <code>europe-west3</code> eingerichtet. Dies bedeutet keine ausschließlich europäische Verarbeitung: Firebase Authentication wird laut Firebase in den USA betrieben; Anbieter und technische Infrastruktur können Daten auch außerhalb Europas verarbeiten. Bei Verbindungen können unter anderem IP-Adresse, Geräte- und Verbindungsinformationen verarbeitet werden.</p>
+  <h3>5. Zwecke und Rechtsgrundlagen</h3>
+  <p>Wir verarbeiten Spielstand und technische Kennung, um die von dir angeforderten Geschichten, Audios und Kontingente bereitzustellen (Art. 6 Abs. 1 lit. b DSGVO, soweit anwendbar). Anfragebegrenzung, Schutz vor Missbrauch und sichere Bereitstellung beruhen auf unserem berechtigten Interesse an einem funktionsfähigen Dienst (lit. f). Soweit eine gesetzliche Pflicht zur Aufbewahrung besteht, gilt lit. c. Du entscheidest, welche Geschichte du eingibst und ob du eine Szene vertonen lässt. Die App enthält derzeit keine von uns eingebundenen Werbe- oder Nutzungsanalyse-SDKs und keine aktive Kaufabwicklung oder RevenueCat-Integration.</p>
+  <h3>6. Speicherung und Löschung</h3>
+  <p>Deine Abenteuer und erzeugten Audiodateien bleiben grundsätzlich erhalten, solange du den Spielstand verwendest. Unter <em>Konto &amp; Nutzung → App-Daten löschen</em> kannst du die Löschung bestätigen. Dabei sperrt der Server neue Vorgänge für die bisherige UID und entfernt Abenteuer, Szenen, Vorgänge, Audioeinträge und die zugehörigen privaten Audiodateien; die App löscht ihren Audio-Cache und meldet die anonyme Sitzung ab. Falls noch eine Generierung läuft, wird die Löschung vorgemerkt und du musst sie nach der angezeigten Wartezeit erneut bestätigen.</p>
+  <p class="callout">Derzeit löscht diese Funktion nicht automatisch den separaten anonymen Firebase-Authentication-Nutzereintrag. Ein minimaler Datensatz mit der bisherigen UID und einem Löschzeitpunkt bleibt bestehen, damit verspätete Anfragen keinen gelöschten Spielstand wiederherstellen. Anbieter können technische Protokolle oder Daten aufgrund eigener Aufbewahrungsfristen und rechtlicher Pflichten behalten. Unser eigener Function-Code protokolliert Geschichten- und Audiotexte nicht absichtlich.</p>
+  <p>Du kannst uns zur Auskunft oder zur weiteren Prüfung einer Löschung unter der unten genannten Adresse kontaktieren. Für eine Zuordnung kann eine Bestätigung deiner technischen Kennung erforderlich sein. Eine App-Deinstallation allein veranlasst keine serverseitige Löschung; der lokale Audio-Cache wird dabei nach Betriebssystemverhalten entfernt.</p>
+  <h3>7. Empfänger, internationale Verarbeitung und deine Rechte</h3>
+  <p>Empfänger der für ihre Aufgabe nötigen Daten sind Google/Firebase, OpenRouter und die über OpenRouter eingesetzten Modellanbieter, derzeit insbesondere Google für Text und xAI für Sprachausgabe. Verarbeitung kann in Staaten außerhalb des Europäischen Wirtschaftsraums stattfinden. Weitere Angaben zu Schutzmaßnahmen, Speicherfristen und Anbieterpraktiken findest du in deren Informationen:</p>
+  <ul>
+    <li><a href="https://firebase.google.com/support/privacy">Firebase: Privacy and Security</a></li>
+    <li><a href="https://openrouter.ai/privacy/">OpenRouter Privacy Policy</a> und <a href="https://openrouter.ai/docs/guides/privacy/provider-logging">Provider Logging</a></li>
+    <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+    <li><a href="https://x.ai/legal/terms-of-service-enterprise">xAI API Terms</a></li>
+  </ul>
+  <p>Je nach anwendbarem Recht kannst du Auskunft, Berichtigung, Löschung, Einschränkung oder Übertragung verlangen, der Verarbeitung widersprechen und dich bei einer Datenschutzaufsichtsbehörde beschweren. Schreibe dazu an <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a>. Wir können Angaben zur Prüfung und Zuordnung deiner Anfrage benötigen.</p>
+  <h3>8. Diese Webseite und Änderungen</h3>
+  <p>Diese Seite liegt auf GitHub Pages. GitHub kann beim Aufruf technische Zugriffsdaten verarbeiten; siehe <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs Datenschutzerklärung</a>. Wenn sich Funktionen oder Datenflüsse ändern, aktualisieren wir diese Erklärung und das Datum.</p>
+</section>
+<section id="en" class="english" lang="en">
+  <h2>Privacy Policy for Hörpfad</h2>
+  <p class="lead">Hörpfad creates interactive stories that you can read or listen to and continue through your choices. This policy covers the iOS and Android app and its backend services.</p>
+  <h3>1. Controller and contact</h3>
+  <address>DeltaApps · Maurice Dann<br>Lochgasse 1<br>55288 Gabsheim, Germany<br>Email: <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a></address>
+  <h3>2. Data we process</h3>
+  <p>On first use, Firebase Authentication creates an anonymous device account with a user ID (UID). You do not need to enter a name or email address. Under this ID, a dedicated Hörpfad Firestore database stores your story description, language and voice choice, generated plans and scenes, choices, inventory, discovered secrets and achievements, objectives, endings, play time, request counters and audio quota. Technical operation IDs, model names and usage values help us match requests and avoid duplicate generation. The app keeps the anonymous sign-in on your device.</p>
+  <p>Please avoid including confidential information about yourself or others in free-text story descriptions. Such information can become part of the generated story and related AI requests.</p>
+  <h3>3. AI stories and speech</h3>
+  <p>When you create or continue a story, the app sends the required text and game state to our Firebase Functions. The server sends the story description or current scene, plan, choice and relevant game state through OpenRouter to a text model. Hörpfad is configured for Google Gemini 2.5 Flash; OpenRouter routes the request to an available provider endpoint. For requested narration, the server sends scene text through OpenRouter to the configured xAI Grok speech model. The app does not send microphone recordings or request microphone access for these features.</p>
+  <p>For text requests, our server sets OpenRouter's <code>data_collection: deny</code> routing option. According to OpenRouter, this excludes provider endpoints marked as collecting data. The current speech request does not set that option. We do not promise EU-only processing or immediate deletion of all inputs by every AI provider. Provider retention and safety processing depend on the applicable terms.</p>
+  <h3>4. Audio files and infrastructure</h3>
+  <p>Generated MP3 files are held in a private Cloud Storage bucket under the anonymous UID. To play them, the server issues a time-limited signed download URL. The app may cache audio files on the device for repeat playback; the operating system may also clear this cache. Hörpfad uses Google's Firebase Authentication, Cloud Firestore, Cloud Functions and Cloud Storage. The Firestore database, audio bucket and Functions are configured for <code>europe-west3</code>. This does not mean that all processing stays in Europe: Firebase states that Authentication runs in the United States, and providers and technical infrastructure may process data elsewhere. Connection processing may include IP addresses, device and connection information.</p>
+  <h3>5. Purposes and legal bases</h3>
+  <p>Where the GDPR applies, we process game state and the technical ID to provide the stories, audio and quotas you request (Article 6(1)(b)). Request limits, abuse prevention and secure delivery serve our legitimate interest in a reliable service (Article 6(1)(f)). Legal retention duties, if applicable, are covered by Article 6(1)(c). You choose what story to submit and whether to request narration. The app currently includes no advertising or usage analytics SDK integrated by us and no active purchase flow or RevenueCat integration.</p>
+  <h3>6. Retention and deletion</h3>
+  <p>Your adventures and generated audio generally remain while you use the game state. You can confirm deletion under <em>Account &amp; Usage → Delete App Data</em> (shown as <em>Konto &amp; Nutzung → App-Daten löschen</em> in the current German interface). The server then blocks new operations for the old UID and removes adventures, scenes, operations, audio records and associated private audio files. The app clears its audio cache and signs out of the anonymous session. If generation is still running, deletion is marked pending and you must confirm it again after the indicated wait.</p>
+  <p class="callout">This feature currently does not automatically delete the separate anonymous Firebase Authentication user record. A minimal record containing the old UID and deletion time remains to stop delayed requests from restoring deleted game data. Providers may retain technical logs or data under their own retention periods and legal obligations. Our own Function code does not intentionally log story or audio text.</p>
+  <p>You can contact us to request access or further review of deletion. We may need to verify the relevant technical ID. Uninstalling the app alone does not request server-side deletion; removal of the local audio cache then follows operating-system behavior.</p>
+  <h3>7. Recipients, international processing and your rights</h3>
+  <p>Data needed for their respective tasks is received by Google/Firebase, OpenRouter and the model providers used through OpenRouter, currently notably Google for text and xAI for speech. Processing may occur outside the European Economic Area. See their information for safeguards, retention and provider practices:</p>
+  <ul>
+    <li><a href="https://firebase.google.com/support/privacy">Firebase Privacy and Security</a></li>
+    <li><a href="https://openrouter.ai/privacy/">OpenRouter Privacy Policy</a> and <a href="https://openrouter.ai/docs/guides/privacy/provider-logging">Provider Logging</a></li>
+    <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+    <li><a href="https://x.ai/legal/terms-of-service-enterprise">xAI API Terms</a></li>
+  </ul>
+  <p>Depending on applicable law, you may request access, correction, deletion, restriction or portability, object to processing and complain to a data protection authority. Contact <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a>. We may need information to verify and match your request.</p>
+  <h3>8. This website and changes</h3>
+  <p>This page is hosted on GitHub Pages. GitHub may process technical access data when you visit it; see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's Privacy Statement</a>. We update this policy and its date when features or data flows change.</p>
+</section>
+<footer>© 2026 DeltaApps · Hörpfad</footer>
+</main></body></html>

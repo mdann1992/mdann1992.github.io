@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Neon Reel Support. Hilfe bei Käufen, Wiederherstellung und Kontolöschung. Help with purchases, recovery and account deletion.">
+  <title>Neon Reel · Hilfe und Kontolöschung / Support and account deletion</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #faf7fb;
+      --surface: #fff;
+      --ink: #22182d;
+      --muted: #5e526a;
+      --accent: #8c2369;
+      --edge: #e3d9e8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #17121d;
+        --surface: #211929;
+        --ink: #faf4fb;
+        --muted: #d6cada;
+        --accent: #ffa9db;
+        --edge: #48384f;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    header, main { width: min(100% - 2rem, 50rem); margin-inline: auto; }
+    header {
+      padding-block: 1.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem 1.5rem;
+    }
+    header p { margin: 0; font-weight: 750; }
+    nav { display: flex; flex-wrap: wrap; gap: .4rem 1rem; }
+    article {
+      margin: 0 0 1.25rem;
+      padding: clamp(1rem, 4vw, 2.5rem);
+      border: 1px solid var(--edge);
+      border-radius: 1rem;
+      background: var(--surface);
+      scroll-margin-top: 1rem;
+    }
+    h1, h2 { line-height: 1.24; }
+    h1 { margin: .15rem 0 .5rem; font-size: clamp(1.85rem, 5vw, 2.65rem); }
+    h2 { margin: 1.8rem 0 .7rem; font-size: 1.25rem; }
+    p, ul { margin: .5rem 0 .85rem; }
+    ul { padding-inline-start: 1.25rem; }
+    li + li { margin-top: .4rem; }
+    address { font-style: normal; }
+    a { color: var(--accent); text-underline-offset: .19em; overflow-wrap: anywhere; }
+    a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    .meta { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <p>Neon Reel</p>
+    <nav aria-label="Sprache / Language">
+      <a href="#de" lang="de" hreflang="de">Deutsch</a>
+      <a href="#en" lang="en" hreflang="en">English</a>
+    </nav>
+  </header>
+  <main>
+    <article id="de" lang="de">
+      <h1>Neon Reel · Hilfe und Kontolöschung</h1>
+      <p>Für das private Filmstudio von DeltaApps auf iPhone, iPad und Android. Kontakt für Support und Datenschutz ist <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a>.</p>
+
+      <h2 id="loeschung">Studio-Konto und Daten löschen</h2>
+      <p><strong>Mit Zugriff auf die App.</strong> Öffne in deinem Studio die <strong>Einstellungen</strong>, wähle <strong>Studiodaten löschen</strong> und bestätige mit <strong>Alle Studiodaten löschen</strong>. Sichere Videos, die du behalten möchtest, vorher in deiner Galerie. Wenn du nur einen Film entfernen möchtest, lösche das einzelne Projekt über sein Projektmenü.</p>
+      <p><strong>Ohne App oder Gerätezugriff.</strong> <a href="mailto:mauricedann92@gmail.com?subject=Neon%20Reel%20%E2%80%93%20Studio%20und%20Daten%20l%C3%B6schen">Löschung per E-Mail beantragen</a>. Schreibe, dass du dein Neon-Reel-Studio mit den zugehörigen Daten löschen lassen möchtest. Nenne, falls bekannt, deinen Studio-Benutzernamen oder deine Studio-ID (UID). Beides findest du bei bestehendem Zugriff unter <strong>Einstellungen → Dein Profil</strong>. Auch ohne diese Angaben kannst du uns kontaktieren. Wir prüfen die Zuordnung und fragen bei Bedarf nach Angaben, mit denen sich dein Zugriff bestätigen lässt. Behalte deinen Kontoschlüssel, Zugangscodes und Zahlungsdaten für dich.</p>
+
+      <h2>Welche Daten werden gelöscht?</h2>
+      <p>Die Löschung entfernt dein Studio-Profil und deinen Benutzernamen. Deine Projekte mit Chats, Referenzbildern, generierten Medien und Filmen werden zur Löschung vorgemerkt. Dein Kontoschlüssel wird ungültig. Verbleibende Credits und Chatnachrichten verfallen mit deiner Bestätigung. Eine Store-Erstattung beantragst du gesondert.</p>
+      <p>Ein Hintergrundprozess entfernt die Projektdateien. Cloud Storage hält gelöschte Medien danach noch sieben Tage zur technischen Wiederherstellung vor. Bereits exportierte oder geteilte Kopien verwaltest du auf deinem Gerät und bei den jeweiligen Empfängern selbst. Die anonyme Anmeldekennung im gemeinsam genutzten Firebase-Projekt kann bestehen bleiben.</p>
+      <p>Begrenzte Kauf-, Erstattungs- und Missbrauchsschutzdaten können für die sichere Abrechnung und gesetzliche Pflichten erhalten bleiben. Kaufnachweise bei Apple, Google oder RevenueCat werden nicht automatisch mit dem Studio gelöscht. Für gesondert gespeicherte Inhaltsmeldungen sind 90 Tage ab Eingang vorgesehen. Sobald die automatische Löschregel aktiv ist, werden fällige Meldungen zeitversetzt entfernt. Einzelheiten und weitere Rechte stehen in der <a href="../PrivacyPolicy/neon-reel.html#de">Datenschutzerklärung</a>.</p>
+
+      <h2>Studio auf einem neuen Gerät öffnen</h2>
+      <p>Unter <strong>Einstellungen → Kontoschlüssel sichern</strong> kannst du einen Schlüssel erstellen. Verwahre ihn vertraulich. Wer ihn besitzt, kann auf Projekte, Medien und Guthaben deines Studios zugreifen. Auf dem neuen Gerät wählst du <strong>Einstellungen → Studio mit Schlüssel öffnen</strong> und gibst ihn dort ein. Ohne bestehende Sitzung oder Schlüssel kann der Zugriff verloren gehen. Einen bereits gelöschten Studiozugang kann der Schlüssel nicht wiederherstellen.</p>
+
+      <h2>Käufe, Guthaben und Chatnachrichten</h2>
+      <p>Creditpakete sind Einmalkäufe im jeweiligen Store. Sie fügen deinem Studio Credits und Chatnachrichten hinzu. Neue Studios starten mit insgesamt drei Chatnachrichten. Nach einem Paketkauf kannst du für fünf vorhandene Credits das verbleibende Nachrichtenkontingent wieder auf den vollen Umfang deines zuletzt gültigen Pakets setzen.</p>
+      <p>Fehlt eine Gutschrift, warte bei ausstehenden Zahlungen auf die Bestätigung des Stores. Öffne dasselbe Studio und wähle <strong>Meine Käufe abgleichen</strong>, bevor du erneut kaufst. Bei einer Store-Erstattung werden bereits gutgeschriebene Einheiten zurückgenommen. Verbrauchte Credits werden mit künftigen Gutschriften verrechnet. Der Shop zeigt einen offenen Ausgleich vor dem Kauf. Eine zusätzliche Geldabbuchung entsteht dadurch nicht. Erstattungsanträge bearbeitet der Store. <a href="https://support.apple.com/en-us/118223">Erstattung bei Apple beantragen</a> · <a href="https://support.google.com/googleplay/answer/2479637">Erstattung bei Google Play beantragen</a></p>
+
+      <h2>Problematischen Inhalt melden</h2>
+      <p>Wähle im Projektmenü oder beim fertigen Film <strong>Inhalt melden</strong>. Wähle eine Kategorie, ergänze bei Bedarf eine kurze Notiz und sende die Meldung in der App ab. Die Bestätigung zeigt an, dass sie gespeichert wurde. Für andere Probleme genügt eine E-Mail mit Plattform und einer kurzen Beschreibung.</p>
+    </article>
+    <article id="en" lang="en">
+      <h1>Neon Reel · Support and account deletion</h1>
+      <p>For the private film studio by DeltaApps on iPhone, iPad and Android. For support and privacy requests, contact <a href="mailto:mauricedann92@gmail.com">mauricedann92@gmail.com</a>.</p>
+
+      <h2 id="deletion">Delete your studio account and data</h2>
+      <p><strong>If you can open the app.</strong> Go to <strong>Settings</strong> in your studio, select <strong>Delete studio data</strong> and confirm with <strong>Delete all studio data</strong>. Save any films you want to keep to your gallery first. To remove a single film, delete that project from its project menu.</p>
+      <p><strong>Without the app or your device.</strong> <a href="mailto:mauricedann92@gmail.com?subject=Neon%20Reel%20%E2%80%93%20Delete%20my%20studio%20and%20data">Request deletion by email</a>. Tell us you want to delete your Neon Reel studio and its associated data. If you know it, include your studio username or studio ID (UID). Both appear under <strong>Settings → Your profile</strong> when you have access. You can also contact us without those details. We verify ownership and may ask for information that helps confirm access to the studio. Keep your recovery key, access codes and payment details private.</p>
+
+      <h2>Which data is deleted?</h2>
+      <p>Deletion removes your studio profile and username. Your projects, with their chats, reference images, generated media and films, are scheduled for deletion. Your recovery key is invalidated. Once you confirm, you forfeit remaining credits and chat messages. Request any store refund separately.</p>
+      <p>A background process removes the project files. Cloud Storage retains deleted media for seven more days for technical recovery. You manage copies you have exported or shared on your device and with their recipients. The anonymous sign-in ID in the shared Firebase project may remain.</p>
+      <p>Limited purchase, refund and abuse-prevention records may be retained for secure accounting and legal obligations. Apple, Google and RevenueCat purchase records are not automatically deleted with the studio. Separately stored content reports have a scheduled retention period of 90 days from submission. Once the automatic deletion policy is active, eligible reports are removed asynchronously. See the <a href="../PrivacyPolicy/neon-reel.html#en">Privacy Policy</a> for details and further rights.</p>
+
+      <h2>Open your studio on a new device</h2>
+      <p>Use <strong>Settings → Save your recovery key</strong> to create a key. Keep it private. Anyone who holds it can access your studio’s projects, media and credits. On the new device, choose <strong>Settings → Open a studio with a key</strong> and enter it there. Access can be lost without an existing session or key. The key cannot restore a deleted studio.</p>
+
+      <h2>Purchases, credits and chat messages</h2>
+      <p>Credit packs are one-time store purchases that add credits and chat messages to your studio. New studios start with three chat messages in total. After buying a pack, you can spend five existing credits to reset your remaining messages to the full allowance of your most recent eligible pack.</p>
+      <p>If a credit grant is missing, wait for the store to confirm any pending payment. Open the same studio and select <strong>Check my purchases</strong> before buying again. A store refund reverses the original grant. Credits you have already spent are offset against future grants. The shop displays any outstanding credit offset before another purchase. This does not trigger an additional payment. The store handles refund requests. <a href="https://support.apple.com/en-us/118223">Request a refund from Apple</a> · <a href="https://support.google.com/googleplay/answer/2479637">Request a refund from Google Play</a></p>
+
+      <h2>Report problematic content</h2>
+      <p>Choose <strong>Report content</strong> from the project menu or the finished film. Select a category, add a brief note if needed and submit the report in the app. The confirmation means your report has been saved. For other issues, email us your platform and a brief description.</p>
+    </article>
+  </main>
+</body>
+</html>
